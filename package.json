@@ -15,14 +15,20 @@
     "author": "Hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
+        "bcrypt": "^5.0.1",
         "ejs": "^3.1.6",
         "express": "^4.17.2",
+        "express-flash": "^0.0.2",
+        "express-session": "^1.17.2",
         "fabric-ca-client": "^2.2.4",
-        "fabric-network": "^2.2.4"
+        "fabric-network": "^2.2.4",
+        "method-override": "^3.0.0",
+        "passport": "^0.5.2",
+        "passport-local": "^1.0.0"
     },
     "devDependencies": {
+        "dotenv": "^14.3.2",
         "eslint": "^7.32.0",
-        "lite-server": "^2.3.0",
         "nodemon": "^2.0.15"
     }
 }

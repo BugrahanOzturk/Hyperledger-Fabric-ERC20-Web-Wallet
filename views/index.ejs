@@ -1,13 +1,16 @@
-<h1> <%= name %> </h1>
+<h1>Hoşgeldiniz <%= name %></h1>
 
 <form action='/' method="POST">
     <div>
-        <label for="mint">Mint Amount</label>
+        <label for="mint">Para Yatırma Miktarı</label>
         <input type="mint" id="mint" name="mint">
     </div>
     
-    <button name="button" value='1'>Mint</button>
-    <button name="button" value='2'>Check Balance</button>
+    <button name="button" value='1'>Para Yatır</button>
+    <button name="button" value='2'>Bakiye Sorgula</button>
 
 </form>
-<a href="/view">Test</a>
+
+<form action="/logout?_method=DELETE" method="POST">
+    <button type = "submit">Çıkış Yap</button>
+</form>

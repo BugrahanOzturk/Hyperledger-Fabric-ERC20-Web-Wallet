@@ -1,0 +1,20 @@
+<h1>Giriş Yap</h1>
+<% if (messages.error) { %>
+    <%= messages.error %>
+<% } %>
+
+<form action="/login" method="POST">
+    <div>
+        <label for="email">Kullanıcı Adı</label>
+        <input type="text" id="email" name="email" required>
+    </div>
+
+    <div>
+        <label for="password">Şifre</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit">Giriş Yap</button>
+</form>
+
+<a href="/register">Kayıt Olma Ekranı</a>
