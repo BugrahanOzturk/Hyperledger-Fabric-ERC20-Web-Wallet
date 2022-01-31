@@ -1,0 +1,20 @@
+<h1>Para Gönderme Ekranı</h1>
+<% if (messages.error) { %>
+    <%= messages.error %>
+<% } %>
+
+<form action="/transfer" method="POST">
+    <div>
+        <label for="recipient">Alıcı Hesap Numarası</label>
+        <input type="recipient" id="recipient" name="recipient" required>
+    </div>
+
+    <div>
+        <label for="amount">Gönderilecek Miktar</label>
+        <input type="amount" id="amount" name="amount" required>
+    </div>
+
+    <button type="submit">Para Gönder</button>
+</form>
+
+<a href="/">Geri Dön</a>

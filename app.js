@@ -84,4 +84,25 @@ exports.mint = async (amount) => {
 	}
 }
 
-//main();
+exports.accountID = async () => {
+	try{
+		console.log('\n--> Evaluate Transaction: ClientAccountID, returns the account ID of the user.');
+		let result = await contract.evaluateTransaction('ClientAccountID');
+		console.log(`*** Result: ${result}`);
+		return result.toString();
+	} catch(error) {
+		console.error(`******** FAILED to query Account ID: ${error}`)
+	}
+}
+
+exports.transfer_amount = async (id, amount) => {
+	try{
+		console.log('\n--> Submit Transaction: Transfer, transfers the specified amount to the specified account address.');
+		let result = await contract.submitTransaction('Transfer', id, amount);
+		console.log('*** Result: committed');
+	} catch(error) {
+		console.error(`******** FAILED to transfer tokens to the specified account: ${error}`)
+	}
+}
+
+

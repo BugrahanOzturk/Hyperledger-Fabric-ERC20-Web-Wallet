@@ -1,5 +1,13 @@
 <h1>Hoşgeldiniz <%= name %></h1>
 
+<form action='/' method="GET">
+    <div>
+        <label for="hesap">Hesap Numarası</label>
+        <input type="hesap" id="hesap" name="hesap" value=<%=val%>>
+    </div>
+</form>
+
+
 <form action='/' method="POST">
     <div>
         <label for="mint">Para Yatırma Miktarı</label>
@@ -8,6 +16,7 @@
     
     <button name="button" value='1'>Para Yatır</button>
     <button name="button" value='2'>Bakiye Sorgula</button>
+    <button name="button" value='3'>Para Gönderme Ekranı</button>
 
 </form>
 

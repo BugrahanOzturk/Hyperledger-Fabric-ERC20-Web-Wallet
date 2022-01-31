@@ -4,7 +4,7 @@ if(process.env.NODE_ENV !== 'production'){
 
 const express = require('express');
 const app = express();
-const { init_identity, connect_network, check_balance, mint } = require('./app.js');
+const { init_identity, connect_network, check_balance, mint, accountID, transfer_amount } = require('./app.js');
 
 // Login Page Essentials 
 const bcrypt = require('bcrypt');
@@ -35,8 +35,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', {name: req.user.email});
+app.get('/', checkAuthenticated, async (req, res) => {
+    try {
+        let val = await accountID();
+        res.render('index.ejs', {name: req.user.email, val: val});
+    } catch(error) {
+        console.log(error);
+        res.render('index.ejs', {name: req.user.email});
+    }
 });
 
 app.post('/', async (req, res) => {
@@ -48,6 +54,11 @@ app.post('/', async (req, res) => {
     if(req.body.button == 2){
         console.log("Check Balance!");
         res.redirect('/view')
+    }
+
+    if(req.body.button == 3){
+        console.log("Transfer Money");
+        res.redirect('/transfer');
     }
 });
 
@@ -98,6 +109,20 @@ app.get('/view', async (req, res) => {
     } catch(error) {
         console.log(error);
         res.redirect('/');
+    }
+});
+
+app.get('/transfer', checkAuthenticated, (req, res) => {
+    res.render('transfer.ejs');
+});
+
+app.post('/transfer', async (req, res) => {
+    try {
+        await transfer_amount(req.body.recipient, parseInt(req.body.amount));
+        res.redirect('/view')
+    } catch(error) {
+        console.log(error);
+        res.redirect('/view');
     }
 });
 
